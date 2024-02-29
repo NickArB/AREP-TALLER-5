@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Docker - Taller 5</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="index.css">
+    </head>
+    <body>
+        <form>
+          <h1>Calculate sin of a number!</h1>
+          <label>Number :</label><br>
+          <input type="text" id="sinNumber" placeholder="Put ur number here..."><br><br>
+          <input type="button" value="Calculate" onclick="asincronousSin(sinNumber)">
+          <div id="sin"></div>
+
+          <h1>Calculate cos of a number!</h1>
+          <label>Number :</label><br>
+          <input type="text" id="cosNumber" placeholder="Put ur number here..."><br><br>
+          <input type="button" value="Calculate" onclick="asincronousCos(cosNumber)">
+          <div id="cos"></div>
+
+          <h1>Is palindrome?</h1>
+          <label>Word :</label><br>
+          <input type="text" id="word" placeholder="Put ur word here..."><br><br>
+          <input type="button" value="Calculate" onclick="asincronousPal(word)">
+          <div id="pal"></div>
+
+          <h1>Calculate the magnitude of a vector!</h1>
+          <label>Value of X :</label><br>
+          <input type="text" id="x" placeholder="X value"><br><br>
+          <label>Value of Y :</label><br>
+          <input type="text" id="y" placeholder="Y value"><br><br>
+          <input type="button" value="Calculate" onclick="asincronousVector(x,y)">
+          <div id="vector"></div>
+
+        </form>
+        
+
+        <script>
+            function asincronousSin(number){
+                let url = "/sin?number=" + number.value;
+
+                fetch(url, { method: 'GET' })
+                    .then(x => x.text())
+                    .then(y => {
+                        document.getElementById("sin").innerHTML = "";
+                        document.getElementById("sin").innerHTML = "The sin of " + number.value + " is " + y;
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+
+            function asincronousCos(number){
+                let url = "/cos?number=" + number.value;
+
+                fetch(url, { method: 'GET' })
+                    .then(x => x.text())
+                    .then(y => {
+                        document.getElementById("cos").innerHTML = "";
+                        document.getElementById("cos").innerHTML = "The cos of " + number.value + " is " + y;
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+
+            function asincronousPal(word){
+                let url = "/pal?word=" + word.value;
+
+                fetch(url, { method: 'GET' })
+                    .then(x => x.text())
+                    .then(y => {
+                        document.getElementById("pal").innerHTML = "";
+                        document.getElementById("pal").innerHTML = y;
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+
+            function asincronousVector(x,y){
+                let url = "/vector?x=" + x.value + "&y=" + y.value;
+
+                fetch(url, { method: 'GET' })
+                    .then(x => x.text())
+                    .then(y => {
+                        document.getElementById("vector").innerHTML = "";
+                        document.getElementById("vector").innerHTML = "The magnitude of the vector is " + y;
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+        </script>
+    </body>
+</html>
