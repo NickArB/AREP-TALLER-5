@@ -44,11 +44,11 @@ $ mvn exec:java -"Dexec.mainClass"="com.edu.escuelaing.SparkWebServer"
 ```
 http://localhost:4567/index.html
 ```
-![alt text](image.png)
+![alt text](images/image.png)
 
 Prueba de cada una de las funcionalidades
 
-![alt text](image-1.png)
+![alt text](images/image-1.png)
 
 ### Creación de imagenes con Docker
 1. Es necesario definir todas las clases y dependencias del proyecto para construir la imagen con Docker. Para ello ejecute la siguiente instrucción
